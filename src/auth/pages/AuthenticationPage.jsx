@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import styled from "styled-components";
 import Swal from "sweetalert2";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { useForm } from "../../hooks/useForm";
+import { ProgressBar } from "../components/ProgressBar";
 import "./styles/Authentication.css";
 
 const loginFormFields = {
@@ -70,6 +72,7 @@ export const AuthenticationPage = () => {
     
   }
 
+  
   useEffect(() => {
     if( errorMessage !== undefined ) {
       Swal.fire("Alerta", errorMessage, "error");
@@ -80,6 +83,7 @@ export const AuthenticationPage = () => {
     <div className="container login-container">
       <div className="row">
         <div className="col-md-6 login-form-1">
+          <ProgressBar />
           <h3>Ingreso</h3>
           <span className="text-danger">{errorMessage}</span>
           <form onSubmit={loginSubmit}>
